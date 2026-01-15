@@ -15,13 +15,13 @@ function normalizeUrl(url: string | undefined): string | undefined {
 }
 
 export const siteConfig = {
-  name: "AIGuard",
-  tagline: "EU AI Act readiness for teams shipping AI products.",
+  name: "KlyraPay",
+  tagline: "Glass-smooth payments for modern fintech teams.",
   description:
-    "AIGuard helps you ship compliant AI: risk classification, policy-ready documentation, and audit trails—fast. Frontend-only landing page template.",
+    "KlyraPay is a frontend-only landing page template for a next-gen payment + banking platform—realistic visuals, SEO-first architecture, dark/light theming, and multi-language support.",
   url: normalizeUrl(env("NEXT_PUBLIC_SITE_URL")) ?? "http://localhost:3000",
   allowIndexing: envBool("NEXT_PUBLIC_ALLOW_INDEXING", true),
   githubRepoUrl:
     env("NEXT_PUBLIC_GITHUB_REPO_URL") ??
-    "https://github.com/your-handle/landing-02-aiguard",
+    "https://github.com/your-handle/landing-03-klyrapay",
 } as const;

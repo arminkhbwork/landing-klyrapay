@@ -1,7 +1,12 @@
 import { Container } from "@/components/ui/container";
 import { LinkButton } from "@/components/ui/button";
+import { cookies } from "next/headers";
 
-export default function NotFound() {
+import { localePath, normalizeLocale } from "@/lib/i18n";
+
+export default async function NotFound() {
+  const cookieStore = await cookies();
+  const locale = normalizeLocale(cookieStore.get("NEXT_LOCALE")?.value);
   return (
     <Container className="py-16 sm:py-20">
       <div className="mx-auto max-w-xl text-center">
@@ -15,7 +20,7 @@ export default function NotFound() {
           If you followed an outdated link, head back to the homepage.
         </p>
         <div className="mt-8 flex justify-center">
-          <LinkButton href="/" variant="secondary">
+          <LinkButton href={localePath(locale, "/")} variant="secondary">
             Back home
           </LinkButton>
         </div>

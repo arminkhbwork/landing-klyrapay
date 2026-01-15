@@ -4,8 +4,8 @@ import "./globals.css";
 
 import { siteConfig } from "@/lib/site";
 import { getMetadata } from "@/lib/seo";
-import { SiteHeader } from "@/components/site/header";
-import { SiteFooter } from "@/components/site/footer";
+import { normalizeLocale } from "@/lib/i18n";
+import { cookies } from "next/headers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,11 +19,27 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = getMetadata();
 
-export default function RootLayout({
+const THEME_SCRIPT = `
+(() => {
+  try {
+    const saved = localStorage.getItem("theme");
+    const systemDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = saved ? saved === "dark" : systemDark;
+    const root = document.documentElement;
+    root.classList.toggle("dark", isDark);
+    root.style.colorScheme = isDark ? "dark" : "light";
+  } catch (_) {}
+})();
+`.trim();
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const locale = normalizeLocale(cookieStore.get("NEXT_LOCALE")?.value);
+
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -32,22 +48,18 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-white font-sans antialiased dark:bg-zinc-950`}
       >
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         <script
           type="application/ld+json"
-           
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationJsonLd),
           }}
         />
-        <div className="min-h-dvh">
-          <SiteHeader />
-          <main>{children}</main>
-          <SiteFooter />
-        </div>
+        <div className="min-h-dvh">{children}</div>
       </body>
     </html>
   );
