@@ -1,7 +1,30 @@
 {
-  "name": "landing-03-klyrapay",
+  "name": "landing-klyrapay",
   "version": "0.1.0",
+  "description": "SEO-first startup landing page for payment / banking infrastructure product with i18n and dark mode",
   "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arminkhbwork/landing-klyrapay.git"
+  },
+  "keywords": [
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "landing-page",
+    "seo",
+    "startup",
+    "i18n",
+    "internationalization",
+    "threejs",
+    "dark-mode"
+  ],
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

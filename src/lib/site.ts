@@ -23,5 +23,5 @@ export const siteConfig = {
   allowIndexing: envBool("NEXT_PUBLIC_ALLOW_INDEXING", true),
   githubRepoUrl:
     env("NEXT_PUBLIC_GITHUB_REPO_URL") ??
-    "https://github.com/your-handle/landing-03-klyrapay",
+    "https://github.com/arminkhbwork/landing-klyrapay",
 } as const;
