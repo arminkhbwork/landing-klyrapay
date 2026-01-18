@@ -10,10 +10,8 @@ COPY package.json package-lock.json ./
 ENV HUSKY=0
 # Some platforms set NODE_ENV=production during image builds, which makes npm
 # omit devDependencies by default. Tailwind/PostCSS are build-time deps, so we
-# force-enable dev dependency installation for the build stages.
-ENV NODE_ENV=development
-ENV NPM_CONFIG_PRODUCTION=false
-RUN npm ci
+# must force-install devDependencies in the build stages.
+RUN npm ci --include=dev
 
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
