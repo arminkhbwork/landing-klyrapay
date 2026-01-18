@@ -22,7 +22,7 @@ export function getMetadata(input: GetMetadataInput = {}): Metadata {
   for (const l of locales) {
     languageAlternates[l] = new URL(
       localePath(l, path),
-      siteConfig.url,
+      siteConfig.url
     ).toString();
   }
 

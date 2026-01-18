@@ -26,7 +26,7 @@ export function MobileMenu({
   const mounted = useSyncExternalStore(
     () => () => {},
     () => true,
-    () => false,
+    () => false
   );
 
   useEffect(() => {
@@ -56,8 +56,8 @@ export function MobileMenu({
     <>
       <div
         className={cn(
-          "fixed inset-0 z-[9998] bg-zinc-950/25 backdrop-blur-sm transition-opacity duration-300 dark:bg-zinc-950/60 md:hidden",
-          isOpen ? "opacity-100" : "pointer-events-none opacity-0",
+          "fixed inset-0 z-[9998] bg-zinc-950/25 backdrop-blur-sm transition-opacity duration-300 md:hidden dark:bg-zinc-950/60",
+          isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         )}
         onClick={closeMenu}
         aria-hidden="true"
@@ -65,10 +65,10 @@ export function MobileMenu({
 
       <div
         className={cn(
-          "fixed inset-0 z-[9999] flex flex-col gap-8 overflow-y-auto bg-white/85 p-6 pt-6 text-zinc-900 backdrop-blur-xl transition-all duration-300 dark:bg-gradient-to-br dark:from-indigo-950 dark:via-violet-950 dark:to-fuchsia-950/25 dark:text-white md:hidden",
+          "fixed inset-0 z-[9999] flex flex-col gap-8 overflow-y-auto bg-white/85 p-6 pt-6 text-zinc-900 backdrop-blur-xl transition-all duration-300 md:hidden dark:bg-gradient-to-br dark:from-indigo-950 dark:via-violet-950 dark:to-fuchsia-950/25 dark:text-white",
           isOpen
             ? "translate-y-0 opacity-100"
-            : "pointer-events-none translate-y-2 opacity-0",
+            : "pointer-events-none translate-y-2 opacity-0"
         )}
       >
         <div className="flex items-center justify-between pb-2">
@@ -119,7 +119,7 @@ export function MobileMenu({
               className="group relative rounded-xl border border-zinc-200/70 bg-white/70 px-6 py-4 text-lg font-semibold text-zinc-900 shadow-sm backdrop-blur transition-all hover:border-indigo-300/70 hover:bg-white/85 hover:shadow-md hover:shadow-indigo-500/10 dark:border-white/5 dark:bg-white/5 dark:text-white dark:hover:border-violet-400/30 dark:hover:bg-gradient-to-r dark:hover:from-violet-500/10 dark:hover:to-fuchsia-500/10 dark:hover:shadow-lg dark:hover:shadow-violet-500/10"
             >
               <span className="relative z-10">{item.label}</span>
-              <span className="absolute right-6 top-1/2 -translate-y-1/2 text-indigo-600 opacity-0 transition-opacity group-hover:opacity-100 dark:text-violet-300">
+              <span className="absolute top-1/2 right-6 -translate-y-1/2 text-indigo-600 opacity-0 transition-opacity group-hover:opacity-100 dark:text-violet-300">
                 →
               </span>
             </Link>
@@ -156,26 +156,26 @@ export function MobileMenu({
       <button
         type="button"
         onClick={() => setIsOpen((v) => !v)}
-        className="relative flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-xl border border-zinc-200/60 bg-white/50 shadow-sm backdrop-blur transition-all hover:border-zinc-300 hover:bg-white/70 dark:border-white/10 dark:bg-white/5 dark:shadow-none dark:hover:border-white/20 dark:hover:bg-white/10 md:hidden"
+        className="relative flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-xl border border-zinc-200/60 bg-white/50 shadow-sm backdrop-blur transition-all hover:border-zinc-300 hover:bg-white/70 md:hidden dark:border-white/10 dark:bg-white/5 dark:shadow-none dark:hover:border-white/20 dark:hover:bg-white/10"
         aria-label="Toggle menu"
         aria-expanded={isOpen}
       >
         <span
           className={cn(
             "h-0.5 w-6 origin-center rounded-full bg-zinc-900 transition-all duration-300 dark:bg-white",
-            isOpen && "translate-y-2 rotate-45",
+            isOpen && "translate-y-2 rotate-45"
           )}
         />
         <span
           className={cn(
             "h-0.5 w-6 rounded-full bg-zinc-900 transition-all duration-300 dark:bg-white",
-            isOpen && "opacity-0",
+            isOpen && "opacity-0"
           )}
         />
         <span
           className={cn(
             "h-0.5 w-6 origin-center rounded-full bg-zinc-900 transition-all duration-300 dark:bg-white",
-            isOpen && "-translate-y-2 -rotate-45",
+            isOpen && "-translate-y-2 -rotate-45"
           )}
         />
       </button>
@@ -183,7 +183,7 @@ export function MobileMenu({
       {mounted &&
         createPortal(
           <div data-open={isOpen ? "true" : "false"}>{menuContent}</div>,
-          document.body,
+          document.body
         )}
     </>
   );

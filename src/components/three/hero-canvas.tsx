@@ -115,7 +115,7 @@ export function HeroThreeCanvas({ className }: { className?: string }) {
     orbMat2.color = new THREE.Color("#2563eb");
     const orb2 = new THREE.Mesh(
       new THREE.SphereGeometry(0.65, 32, 16),
-      orbMat2,
+      orbMat2
     );
     orb2.position.set(2.1, 0.9, -2.0);
     group.add(orb2);
@@ -162,7 +162,7 @@ export function HeroThreeCanvas({ className }: { className?: string }) {
         isVisible = entries.some((en) => en.isIntersecting);
         if (isVisible && !raf) tick();
       },
-      { root: null, threshold: 0.01 },
+      { root: null, threshold: 0.01 }
     );
     io.observe(el);
 
@@ -220,8 +220,8 @@ export function HeroThreeCanvas({ className }: { className?: string }) {
     <canvas
       ref={canvasRef}
       className={cn(
-        "h-full w-full [contain:layout_paint_size] [touch-action:manipulation]",
-        className,
+        "h-full w-full [touch-action:manipulation] [contain:layout_paint_size]",
+        className
       )}
       aria-hidden="true"
     />

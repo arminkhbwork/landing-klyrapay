@@ -29,7 +29,7 @@ export function LocaleSwitcher({
     <div
       className={cn(
         "inline-flex items-center rounded-xl border border-zinc-200 bg-white/70 p-1 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5",
-        className,
+        className
       )}
       aria-label="Language switcher"
     >
@@ -47,8 +47,8 @@ export function LocaleSwitcher({
               "rounded-lg px-2.5 py-1 text-xs font-semibold tracking-wide transition-colors",
               size === "sm" ? "px-2 py-1" : "",
               active
-                ? "bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 text-white shadow-sm shadow-indigo-500/20 dark:bg-none dark:bg-white dark:text-zinc-950 dark:shadow-none"
-                : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-white/10",
+                ? "bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 text-white shadow-sm shadow-indigo-500/20 dark:bg-white dark:bg-none dark:text-zinc-950 dark:shadow-none"
+                : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-white/10"
             )}
           >
             {labels[l]}

@@ -18,11 +18,11 @@ export function SectionHeading({
           {eyebrow.toUpperCase()}
         </p>
       ) : null}
-      <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
+      <h2 className="mt-3 text-3xl font-semibold tracking-tight text-balance text-zinc-900 sm:text-4xl dark:text-white">
         {title}
       </h2>
       {description ? (
-        <p className="mt-4 text-pretty text-base leading-7 text-zinc-600 dark:text-zinc-300">
+        <p className="mt-4 text-base leading-7 text-pretty text-zinc-600 dark:text-zinc-300">
           {description}
         </p>
       ) : null}

@@ -47,7 +47,7 @@ export function ThemeToggle({
   const theme = useSyncExternalStore(
     subscribeTheme,
     getThemeSnapshot,
-    () => "light",
+    () => "light"
   );
 
   const nextTheme: Theme = theme === "dark" ? "light" : "dark";
@@ -64,7 +64,7 @@ export function ThemeToggle({
       className={cn(
         "inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white/70 text-zinc-900 shadow-sm backdrop-blur transition-colors hover:bg-zinc-50 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10",
         size === "sm" ? "h-9 w-9" : "h-10 w-10",
-        className,
+        className
       )}
     >
       {theme === "dark" ? (
