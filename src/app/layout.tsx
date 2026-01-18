@@ -10,11 +10,13 @@ import { cookies } from "next/headers";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = getMetadata();
@@ -48,7 +50,11 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className="bg-white dark:bg-zinc-950"
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-white font-sans antialiased dark:bg-zinc-950`}
       >
@@ -59,7 +65,7 @@ export default async function RootLayout({
             __html: JSON.stringify(organizationJsonLd),
           }}
         />
-        <div className="min-h-dvh">{children}</div>
+        <div className="min-h-dvh bg-white dark:bg-zinc-950">{children}</div>
       </body>
     </html>
   );

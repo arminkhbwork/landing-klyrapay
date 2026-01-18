@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -23,22 +22,6 @@ export function SiteHeader({
   locale: Locale;
   dict: Dictionary;
 }) {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    let raf = 0;
-    const update = () => {
-      raf = window.requestAnimationFrame(() => setScrolled(window.scrollY > 0));
-    };
-
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", update);
-      if (raf) window.cancelAnimationFrame(raf);
-    };
-  }, []);
-
   const nav = [
     { label: dict.nav.features, href: localePath(locale, "/#features") },
     { label: dict.nav.rails, href: localePath(locale, "/#rails") },
@@ -52,14 +35,8 @@ export function SiteHeader({
   return (
     <header
       className={cn(
-        // Light theme: solid white at the top (hero) to avoid muddy blending.
-        // After scroll: restore the original glassmorphism styling.
-        // Dark theme: keep the original glassmorphism styling at all times.
-        "sticky top-0 z-50 border-b border-zinc-200/70 transition-colors dark:border-white/10 dark:bg-zinc-950/60 dark:backdrop-blur",
-        scrolled
-          ? "bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/50"
-          : "bg-white",
-        className,
+        "sticky top-0 z-50 border-b border-zinc-200/70 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/50 dark:border-white/10 dark:bg-zinc-950/60 dark:backdrop-blur",
+        className
       )}
     >
       <Container className="flex h-16 items-center justify-between gap-4">

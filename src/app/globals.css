@@ -3,40 +3,37 @@
 /* Tailwind v4: enable class-based dark mode without a config file. */
 @custom-variant dark (&:where(.dark, .dark *));
 
-:root {
-  --background: 255 255 255;
-  /* Slightly softer than pure near-black for light theme text. */
-  --foreground: 24 24 27;
-}
-
-@theme inline {
-  --color-background: rgb(var(--background));
-  --color-foreground: rgb(var(--foreground));
+@theme {
+  --color-background: rgb(255 255 255);
+  --color-foreground: rgb(24 24 27);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+@layer theme {
   :root {
+    --background: 255 255 255;
+    /* Slightly softer than pure near-black for light theme text. */
+    --foreground: 24 24 27;
+  }
+
+  .dark {
     --background: 9 9 11;
     --foreground: 250 250 250;
+    --color-background: rgb(9 9 11);
+    --color-foreground: rgb(250 250 250);
   }
 }
 
-/* Explicit class-based overrides for live theme toggling. */
-:root.dark {
-  --background: 9 9 11;
-  --foreground: 250 250 250;
-}
-
-html,
-body {
+html {
+  background-color: rgb(var(--background));
   height: 100%;
 }
 
 body {
-  background: rgb(var(--background));
+  background-color: rgb(var(--background));
   color: rgb(var(--foreground));
+  min-height: 100%;
 }
 
 .bg-noise {
